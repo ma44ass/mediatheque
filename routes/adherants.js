@@ -9,9 +9,9 @@ let adherents = [
 
 
 
-router.get("/adherents", (req, res) => res.json(adherents));
+router.get("/", (req, res) => res.json(adherents));
 
-router.post("/adherents", (req, res) => {
+router.post("/", (req, res) => {
     const { nom, email } = req.body;
 
     if (!nom) return res.status(400).json({ Erreur: "Nom obligatoire" });
@@ -27,12 +27,6 @@ router.post("/adherents", (req, res) => {
 
     return res.status(201).json({ message: "Un nouveau adhérent ajouté", adherent });
 });
-
-
-
-
-
-
 
 
 

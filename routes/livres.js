@@ -9,9 +9,9 @@ let livres = [
 ];
 
 
-router.get("/livres", (req, res) => res.json(livres));
+router.get("/", (req, res) => res.json(livres));
 
-router.get("/livres/:id", (req, res) => { 
+router.get("/:id", (req, res) => { 
     const id = Number(req.params.id);
     const livre = livres.find((livre) => livre.id === id);
 
@@ -20,7 +20,7 @@ router.get("/livres/:id", (req, res) => {
     return res.json(livre);
 });
 
-router.post("/livres", (req, res) => {
+router.post("/", (req, res) => {
     const { titre, auteur } = req.body;
 
     if (!titre) return res.status(400).json({ Erreur: "Titre obligatoire" });
@@ -38,7 +38,7 @@ router.post("/livres", (req, res) => {
     return res.status(201).json({ message: "Un nouveau livre disponible", livre });
 });
 
-router.patch("/livres/:id", (req, res) => {
+router.patch("/:id", (req, res) => {
     const id = Number(req.params.id);
     const livre = livres.find((livre) => livre.id === id);
     if (!livre) return res.status(404).json({ Erreur: "Livre non existant" });
@@ -62,7 +62,7 @@ router.patch("/livres/:id", (req, res) => {
     return res.status(200).json({ message: "Le livre a été modifié", livre });
 });
 
-router.delete("/livres/:id", (req, res) => {
+router.delete("/:id", (req, res) => {
     const id = Number(req.params.id);
     const livreASupprimer = livres.find((livre) => livre.id === id);
     if (!livreASupprimer) return res.status(404).json({ Erreur: "Livre non existant" });

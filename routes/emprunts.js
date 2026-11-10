@@ -3,9 +3,15 @@ import {Router} from 'express';
 const router = Router();
 
 let emprunts = [];
+let livres = [
+  { id: 1, titre: "Le Petit Prince", auteur: "Saint-Exupéry", disponible: true },
+  { id: 2, titre: "Nedjma", auteur: "Kateb Yacine", disponible: true },
+  { id: 3, titre: "L'Alchimiste", auteur: "Paulo Coelho", disponible: true }
+];
 
 
-router.post("/emprunts", (req, res) => {
+
+router.post("/", (req, res) => {
     const livreId = Number(req.body.livreId);      
     const adherentId = Number(req.body.adherentId); 
 
@@ -30,7 +36,7 @@ router.post("/emprunts", (req, res) => {
     return res.status(201).json({ message: "Emprunt sauvegardé", nouveauEmprunt });
 });
 
-router.patch("/emprunts/:id/retour", (req, res) => {
+router.patch("/:id/retour", (req, res) => {
     const id = Number(req.params.id);
 
     const emprunt = emprunts.find((e) => e.id === id);

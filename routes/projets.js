@@ -9,9 +9,7 @@ let projects = [
 ];
 
 
-router.get("/", (req, res) => {
-  res.json({ message: "GestoPro v1" });
-});
+
 
 //get all projects
 router.get("/", (req, res) => {
